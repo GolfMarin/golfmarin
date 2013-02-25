@@ -1,0 +1,42 @@
+{ "counties": {
+    "county": [
+        {
+            "name": "Marin",
+            "id": "1",
+            "countyInfo": "Hot tub central",
+            "latitude": "38.010",
+            "longitude": "-122.613",
+            "thumbnailURL": "marin",
+            "woeid": "2488201"
+        },
+        {
+            "name": "San Francisco",
+            "id": "2",
+            "countyInfo": "Poet central",
+            "latitude": "37.760",
+            "longitude": "-122.447",
+            "thumbnailURL": "sanfrancisco",
+            "woeid": "2487956"
+        },
+        {
+            "name": "Sonoma",
+            "id": "3",
+            "countyInfo": "Wine central",
+            "latitude": "38.302",
+            "longitude": "-122.629",
+            "thumbnailURL": "sonoma",
+            "woeid": "2488916"
+        },
+        {
+            "name": "San Mateo",
+            "id": "4",
+            "countyInfo": "South central",
+            "latitude": "37.534",
+            "longitude": "-122.393",
+            "thumbnailURL": "sanmateo",
+            "woeid": "2488142"
+
+        }
+    ]
+    }
+}

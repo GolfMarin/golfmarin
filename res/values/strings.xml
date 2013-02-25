@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Golf Marin</string>
+    <string name="title_course_list">Golf Course List</string>
+    <string name="title_county_detail">County Detail</string>
+    <string name="title_course_detail">Golf Course Detail</string>
+    <string name="county">County Icon</string>
+    
+    <string name="title_county_list">Golf Near San Francisco</string>
+    <string name="county_list">County</string>
+    <string name="course_list">Golf Course</string>
+    <string name="detail">Details</string>
+
+</resources>
