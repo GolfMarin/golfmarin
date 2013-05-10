@@ -52,7 +52,173 @@
 	    "isPublic": true,
 	    "slope": "",
 	    "thumbnailURL": "",
-	    "woeid": "2488201"
+	    "woeid": "2488201",
+	    "caddy": 
+		    [
+			{ 
+			"hole": "1",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.020487",
+			    "longitude": "-122.518478"
+			    },
+			    {
+			    "latitude": "38.02051",
+			    "longitude": "-122.518352"
+			    },
+			    {
+			    "latitude": "38.020536",
+			    "longitude": "-122.518226"
+			    }
+			  ]
+			},
+			{
+			"hole": "2",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021626",
+			    "longitude": "-122.519494"
+			    },
+			    {
+			    "latitude": "38.021728",
+			    "longitude": "-122.519516"
+			    },
+			    {
+			    "latitude": "38.021764",
+			    "longitude": "-122.519446"
+			    }
+			  ]
+			},
+			{
+			"hole": "3",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021005",
+			    "longitude": "-122.518579"
+			    },
+			    {
+			    "latitude": "38.020949",
+			    "longitude": "-122.518481"
+			    },
+			    {
+			    "latitude": "38.020892",
+			    "longitude": "-122.518407"
+			    }
+			  ]
+			},
+			{
+			"hole": "4",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.022733",
+			    "longitude": "-122.518492"
+			    },
+			    {
+			    "latitude": "38.022757",
+			    "longitude": "-122.518399"
+			    },
+			    {
+			    "latitude": "38.022783",
+			    "longitude": "-122.51831"
+			    }
+			  ]
+			},
+			{
+			"hole": "5",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.023611",
+			    "longitude": "-122.517729"
+			    },
+			    {
+			    "latitude": "38.023653",
+			    "longitude": "-122.517632"
+			    },
+			    {
+			    "latitude": "38.023728",
+			    "longitude": "-122.517583"
+			    }
+			  ]
+			},
+			{
+			"hole": "6",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.022594",
+			    "longitude": "-122.519803"
+			    },
+			    {
+			    "latitude": "38.022501",
+			    "longitude": "-122.519886"
+			    },
+			    {
+			    "latitude": "38.022422",
+			    "longitude": "-122.519889"
+			    }
+			  ]
+			},
+			{
+			"hole": "7",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021344",
+			    "longitude": "-122.521021"
+			    },
+			    {
+			    "latitude": "38.021293",
+			    "longitude": "-122.521113"
+			    },
+			    {
+			    "latitude": "38.021237",
+			    "longitude": "-122.521175"
+			    }
+			  ]
+			},
+			{
+			"hole": "8",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.022497",
+			    "longitude": "-122.52041"
+			    },
+			    {
+			    "latitude": "38.022613",
+			    "longitude": "-122.520398"
+			    },
+			    {
+			    "latitude": "38.022704",
+			    "longitude": "-122.520359"
+			    }
+			  ]
+			},
+			{
+			"hole": "9",
+			"placement":
+			  [
+			    {
+			    "latitude": "38.021158",
+			    "longitude": "-122.522219"
+			    },
+			    {
+			    "latitude": "38.0211",
+			    "longitude": "-122.522317"
+			    },
+			    {
+			    "latitude": "38.021037",
+			    "longitude": "-122.522402"
+			    }
+			  ]
+			}
+		    ]
+	    
         },
         {
         "address": "1001 Bolinas Road",

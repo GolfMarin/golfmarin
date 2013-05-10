@@ -7,18 +7,24 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-//import android.util.Log;
+import com.google.android.gms.maps.model.LatLng;
+
+import android.util.Log;
+
+import android.util.Log;
 
 
 public class JsonParser {
 	
 	public JSONArray getJSONFromFile(Context ctx, String filename, String objects, String object)
 	{
+		// This could be a general parser that expects a file containing an objects/object hierarchy
+		// This code uses names specific to golfcourses
 		InputStream input;
 		String jsonString = null;
-		JSONObject object1 = null;
-		JSONObject object2 = null;
-		JSONArray array = null;
+		JSONObject golfcoursesJson = null;
+		JSONObject golfcourseJson = null;
+		JSONArray golfcourseJsonArray = null;
 		
 		// Read the file to a string
 		try {
@@ -30,24 +36,25 @@ public class JsonParser {
 			jsonString = new String(buffer);
 		}
 		catch (Exception e) {
-    		//Log.i("mytag","Couldn't read json file " + e.toString());
+    		Log.i("mytag","Couldn't read json file " + e.toString());
 		}
 		
 		// Extract JSONArray from string
 		try {
-			object1 = new JSONObject(jsonString);
-			object2 = object1.getJSONObject(objects);
-			array = object2.getJSONArray(object);
+			golfcoursesJson = new JSONObject(jsonString);
+			golfcourseJson = golfcoursesJson.getJSONObject(objects);
+			golfcourseJsonArray = golfcourseJson.getJSONArray(object);
 		}
 		catch (JSONException e) {
-    		//Log.i("mytag","Couldn't parse JSON string." + e);
+    		Log.i("mytag","Couldn't parse JSON string." + e);
 		}
-		return array; 
+		return golfcourseJsonArray; 
 	}
 	
 	public ArrayList<County> getCountiesFromJSON(JSONArray counties) {
 		
 		ArrayList<County> countiesList = new ArrayList<County>();
+
 		
 		try{
 			for(int i=0; i<counties.length(); i++) {
@@ -74,7 +81,11 @@ public class JsonParser {
 	
 	public ArrayList<Course> getCoursesFromJSON(JSONArray courses, String county) {
 		
+//		JSONObject holeJson = null;
+		JSONArray holeJsonArray = null;
+		JSONArray positionJsonArray = null;
 		ArrayList<Course> coursesList = new ArrayList<Course>();
+		ArrayList<Hole> holeList = new ArrayList<Hole>();
 		
 		try{
 			for(int i=0; i<courses.length(); i++) {
@@ -94,14 +105,75 @@ public class JsonParser {
 				course.woeid = currentObject.getString("woeid");
 				course.imageURL = currentObject.getString("imageURL");
 				course.thumbnailURL = currentObject.getString("thumbnailURL");
-				course.county = county;
 				
+				
+				course.county = county;
+
+				// Get the holes, if the course has a "caddy" object
+				
+				if(currentObject.has("caddy")) {
+					
+					holeJsonArray = currentObject.getJSONArray("caddy");
+											
+					if(holeJsonArray != null) {
+						// Read each hole
+						try{
+							for(int j=0; j< holeJsonArray.length(); j++) {
+								JSONObject currentHoleObject = holeJsonArray.getJSONObject(j);
+								Hole currentHole = new Hole(currentHoleObject.getString("hole"));
+								Log.v("myApp", currentHole.holeNum);
+								
+								// Get the placements, if the course has a "placement" object
+								
+								if(currentHoleObject.has("placement")) {
+									// Read hole placements, front, middle, back
+									positionJsonArray = currentHoleObject.getJSONArray("placement");
+															
+									if(positionJsonArray != null) {
+								
+										try{
+											LatLng frontPosition = new LatLng(positionJsonArray.getJSONObject(0).getDouble("latitude"),
+													positionJsonArray.getJSONObject(0).getDouble("longitude"));
+											
+											LatLng middlePosition = new LatLng(positionJsonArray.getJSONObject(1).getDouble("latitude"),
+													positionJsonArray.getJSONObject(1).getDouble("longitude"));	
+											
+											LatLng backPosition = new LatLng(positionJsonArray.getJSONObject(2).getDouble("latitude"),
+													positionJsonArray.getJSONObject(2).getDouble("longitude"));
+																					
+											currentHole.front = frontPosition;
+											currentHole.middle = middlePosition;
+											currentHole.back = backPosition;
+											
+											Log.v("myApp", "Back: latitude: " + currentHole.back.latitude + ", longitude: " + currentHole.back.longitude);
+										}
+										catch (JSONException e) {
+								    		Log.v("myApp","Couldn't parse JSON position array." + e);
+										}
+									}		
+								}
+								else{
+									Log.v("myApp", "oops, no placement in " + course.name + currentHole.holeNum);
+								}
+								holeList.add(currentHole);
+							}
+						}
+						catch (JSONException e) {
+				    		Log.v("myApp","Couldn't parse JSON hole array." + e);
+						}
+					}
+					course.holeList = holeList;
+				}
+				else{
+					course.holeList = null;
+				//	Log.v("myApp", "oops, no caddy in " + course.name);
+				}			
 				coursesList.add(course);
-				// Log.i("mytag","Added course " + course);
-			}
-		}
+				 // Log.i("myApp","Added course " + course); 							
+			}	
+		}		
 		catch (JSONException e) {
-    		//Log.i("mytag","Couldn't parse JSON course object." + e);
+    		Log.v("myApp","Couldn't parse JSON course object." + e); 
 		}
 		return coursesList;
 	}

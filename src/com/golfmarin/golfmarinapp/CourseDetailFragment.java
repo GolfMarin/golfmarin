@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 
-//import android.util.Log;
+import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -58,6 +58,9 @@ public class CourseDetailFragment extends Fragment {
         	selectedCounty = getArguments().getParcelable("county");
             selectedCourse = getArguments().getParcelable("course");
             courses = getArguments().getParcelableArrayList("courses");
+            
+            Log.v("myApp", "Course detail, onCreate. Course:" + selectedCourse.name + "Holes: " + selectedCourse.holeList);
+            Log.v("myApp", "Course detail fragment, onCreate. Hole 1 front: "+ selectedCourse.holeList.get(0).front);
         }
         
 	}

@@ -1,7 +1,11 @@
 package com.golfmarin.golfmarinapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class Course implements Parcelable{
 	
@@ -21,7 +25,13 @@ public class Course implements Parcelable{
 	String  phone = "None";
 	String  slope = "None";
 	String  thumbnailURL = "sanmateo";
-	String  woeid = "None";	
+	String  woeid = "None";
+	
+//	HoleArrayList holeList = new HoleArrayList();
+//	Hole[] holeArray = new Hole[36];
+
+	ArrayList<Hole> holeList = new ArrayList<Hole>();
+
 	
 	Course(String name) {
 		this.name = name;
@@ -48,6 +58,10 @@ public class Course implements Parcelable{
         out.writeInt(holes);
         out.writeByte((byte) (isPublic ? 1 : 0));
         
+//        out.writeParcelableArray(holeArray, 0);
+
+        out.writeTypedList(holeList);
+        
     }
 
     public static final Parcelable.Creator<Course> CREATOR
@@ -71,6 +85,14 @@ public class Course implements Parcelable{
         phone = in.readString();
         holes = in.readInt();
         isPublic = in.readByte() ==1;
+        
+//        holeArray = (Hole[]) in.readParcelableArray(Hole.class.getClassLoader());
+//        holeList = in.readTypedList(list, c)
+
+        in.readTypedList(holeList, Hole.CREATOR);
+        
+//        Log.v("myApp", "Course " + name + ", holeList: " + holeList);
+        
     }
 
 }

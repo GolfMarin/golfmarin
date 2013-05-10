@@ -128,7 +128,7 @@
         },
 	{	
 	    "address": "844 West Orange Avenue",
-            "city": "South San Francisco",
+            "city": "South San Francisco, CA",
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",
@@ -146,7 +146,7 @@
         },
 	{
 	    "address": "2300 Junipero Serra Blvd.",
-            "city": "Daly City",
+            "city": "Daly City, CA",
 	    "courseInfo": "",
 	    "directions": "",
 	    "holes": "18",

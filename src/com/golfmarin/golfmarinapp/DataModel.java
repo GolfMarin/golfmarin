@@ -40,7 +40,12 @@ public class DataModel {
 	    	// Read San Mateo courses info from file
 	    	ja = jp.getJSONFromFile(ctx, "SanMateo-json.txt", "golfCourses", "golfCourse");
 	    	coursesArray = jp.getCoursesFromJSON(ja, "San Mateo");
-	    	allCoursesArray.addAll(coursesArray);		
+	    	allCoursesArray.addAll(coursesArray);	
+	    	
+	    	// Read Napa courses info from file
+	    	ja = jp.getJSONFromFile(ctx, "napa-json.txt", "golfCourses", "golfCourse");
+	    	coursesArray = jp.getCoursesFromJSON(ja, "Napa");
+	    	allCoursesArray.addAll(coursesArray);
 		}
 		
 		// Method to retrieve counties
